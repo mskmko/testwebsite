@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.7">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="ja"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;CoroWorks | Creators Recruitment&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="description" content="CoroWorks クリエイター募集特設サイト。映像クリエイター、デザイナー募集中。"&gt;</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&amp;family=Syne:wght@400;700;800&amp;display=swap" rel="stylesheet"&gt;</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>tailwind.config = {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>theme: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>extend: {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>fontFamily: {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>'display': ['"Syne"', 'sans-serif'],</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>'body': ['"Space Grotesk"', 'monospace'],</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>colors: {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>'deep-black': '#050505',</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>'pure-white': '#ffffff',</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>'steel-gray': '#1a1a1a',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* Basic Reset &amp; Style */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #050505;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #ffffff;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>overflow-x: hidden;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>html { scroll-behavior: smooth; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* Interactions */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.img-container { overflow: hidden; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.img-container img { transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.img-container:hover img { transform: scale(1.05); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* Marquee Animation */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.marquee-container { overflow: hidden; white-space: nowrap; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.marquee-content { display: inline-block; animation: marquee 20s linear infinite; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>@keyframes marquee {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>0% { transform: translateX(0); }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>100% { transform: translateX(-50%); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* Text Reveal Animation */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.reveal-text { opacity: 0; transform: translateY(20px); animation: fadeUp 0.8s forwards; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body class="font-body antialiased"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;nav class="fixed w-full z-50 top-0 left-0 border-b border-white/10 bg-deep-black/90 backdrop-blur-sm"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;a href="#" class="font-display font-bold text-2xl tracking-tighter"&gt;COROWORKS&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;a href="#contact" class="hidden md:block px-6 py-2 border border-white text-sm hover:bg-white hover:text-black transition-colors duration-300"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>APPLY NOW</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/nav&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;header class="relative h-screen w-full flex items-center justify-center overflow-hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="absolute inset-0 z-0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;img src="https://images.unsplash.com/photo-1492546662075-87c777d4d614?q=80&amp;w=2069&amp;auto=format&amp;fit=crop" alt="Studio" class="w-full h-full object-cover opacity-60"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="absolute inset-0 bg-deep-black/30"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="relative z-10 text-center px-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="text-sm md:text-base tracking-[0.3em] mb-4 text-gray-300 reveal-text" style="animation-delay: 0.2s;"&gt;WE ARE RECRUITING&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1 class="font-display font-extrabold text-6xl md:text-9xl tracking-tight leading-none mb-6 reveal-text" style="animation-delay: 0.4s;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>UNLEASH&lt;br&gt;CREATIVITY</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="max-w-xl mx-auto text-gray-300 text-lg font-light mb-10 reveal-text" style="animation-delay: 0.6s;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>Join CoroWorks. Looking for visionaries to shape the future.</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="reveal-text" style="animation-delay: 0.8s;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;a href="#works" class="inline-block border-b border-white pb-1 hover:text-gray-400 transition-colors"&gt;VIEW OUR WORKS ↓&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/header&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="py-4 border-y border-white/10 bg-deep-black relative z-20"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="marquee-container font-display text-4xl md:text-6xl font-bold text-transparent opacity-20" style="-webkit-text-stroke: 1px white;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="marquee-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>CREATORS WANTED — VIDEO EDITORS — DESIGNERS — DIRECTORS — CREATORS WANTED — VIDEO EDITORS — DESIGNERS — DIRECTORS —</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;section id="works" class="py-24 px-6 max-w-7xl mx-auto"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="flex flex-col md:flex-row justify-between items-end mb-16"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2 class="font-display text-5xl md:text-7xl font-bold"&gt;SELECTED&lt;br&gt;WORKS&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="text-right text-gray-400 mt-4 md:mt-0 max-w-xs"&gt;Minimal aesthetics, maximum impact.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[400px]"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="md:col-span-2 group relative border border-white/10 bg-steel-gray overflow-hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="img-container w-full h-full"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;img src="https://images.unsplash.com/photo-1601921004781-85762332c3f2?q=80&amp;w=2070&amp;auto=format&amp;fit=crop" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="absolute bottom-0 left-0 p-6 w-full bg-deep-black/80 backdrop-blur-sm translate-y-full group-hover:translate-y-0 transition-transform duration-300"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3 class="font-display text-2xl"&gt;Brand Concept Movie&lt;/h3&gt;&lt;p class="text-gray-400 text-sm"&gt;Video Production&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="group relative border border-white/10 bg-steel-gray overflow-hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="img-container w-full h-full"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&amp;w=2070&amp;auto=format&amp;fit=crop" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="absolute bottom-0 left-0 p-6 w-full bg-deep-black/80 backdrop-blur-sm translate-y-full group-hover:translate-y-0 transition-transform duration-300"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3 class="font-display text-2xl"&gt;Tech Promotion&lt;/h3&gt;&lt;p class="text-gray-400 text-sm"&gt;Motion Graphics&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="group relative border border-white/10 bg-steel-gray overflow-hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="img-container w-full h-full"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&amp;w=1964&amp;auto=format&amp;fit=crop" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="absolute bottom-0 left-0 p-6 w-full bg-deep-black/80 backdrop-blur-sm translate-y-full group-hover:translate-y-0 transition-transform duration-300"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3 class="font-display text-2xl"&gt;Visual Identity&lt;/h3&gt;&lt;p class="text-gray-400 text-sm"&gt;Art Direction&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="md:col-span-2 group relative border border-white/10 bg-steel-gray overflow-hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="img-container w-full h-full"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?q=80&amp;w=2000&amp;auto=format&amp;fit=crop" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="absolute bottom-0 left-0 p-6 w-full bg-deep-black/80 backdrop-blur-sm translate-y-full group-hover:translate-y-0 transition-transform duration-300"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3 class="font-display text-2xl"&gt;Live Event Visuals&lt;/h3&gt;&lt;p class="text-gray-400 text-sm"&gt;VJ / Stage Design&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="py-24 bg-pure-white text-deep-black"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="font-display text-6xl font-bold mb-8 leading-tight"&gt;CREATE&lt;br&gt;WITHOUT&lt;br&gt;LIMITS.&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-lg font-medium mb-6"&gt;We don't just follow trends. We create them.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-gray-600 leading-relaxed mb-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>We are a collective of creators obsessed with quality and speed.<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>No boundaries, no gradients, just pure expression.</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;ul class="space-y-4 font-display text-xl font-bold"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li class="flex items-center border-b border-black/10 pb-2"&gt;&lt;span class="mr-4 text-sm"&gt;01&lt;/span&gt; REMOTE FIRST&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li class="flex items-center border-b border-black/10 pb-2"&gt;&lt;span class="mr-4 text-sm"&gt;02&lt;/span&gt; FLEXIBLE HOURS&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li class="flex items-center border-b border-black/10 pb-2"&gt;&lt;span class="mr-4 text-sm"&gt;03&lt;/span&gt; CREATIVE FREEDOM&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="relative h-[600px]"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&amp;w=2070&amp;auto=format&amp;fit=crop" alt="Team" class="w-full h-full object-cover grayscale"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;section id="contact" class="py-32 px-6 bg-deep-black text-center relative overflow-hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[20vw] font-display font-bold text-white/5 pointer-events-none select-none whitespace-nowrap"&gt;JOIN US&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="relative z-10 max-w-3xl mx-auto"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2 class="font-display text-5xl md:text-7xl font-bold mb-8"&gt;READY TO START?&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="text-xl text-gray-400 mb-12"&gt;We are waiting for your portfolio.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;a href="https://docs.google.com/forms/" target="_blank" class="group relative inline-flex h-16 items-center justify-center overflow-hidden bg-white px-12 font-medium text-neutral-900 transition-all duration-300 hover:bg-white hover:text-black hover:scale-105"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="absolute h-0 w-0 bg-neutral-300 transition-all duration-300 group-hover:h-56 group-hover:w-full opacity-20"&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="relative font-display text-xl font-bold tracking-wide"&gt;APPLY VIA GOOGLE FORM&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="mt-6 text-sm text-gray-500"&gt;*Takes less than 5 minutes&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;footer class="py-8 border-t border-white/10 px-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="mb-4 md:mb-0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="font-display font-bold text-xl"&gt;COROWORKS&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="ml-4 text-xs text-gray-500"&gt;© 2025 All</p>
+</body>
+</html>

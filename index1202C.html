@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COLOWORKS | AI Creative Hub</title>
+    <meta name="description" content="AIクリエイティブに特化した案件とクリエイターを結ぶお仕事共創拠点「COLOWORKS」。日本コロムビア所属アーティストMV案件など進行中。">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&family=Outfit:wght@300;700;900&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'display': ['"Outfit"', 'sans-serif'],
+                        'body': ['"Manrope"', 'sans-serif'],
+                    },
+                    colors: {
+                        'bg-black': '#050505',
+                        'columbia-blue': '#0052cc',
+                        'columbia-dark-blue': '#002a66',
+                        'columbia-red': '#e60012',
+                        'text-white': '#ffffff',
+                        'glass-border': 'rgba(255, 255, 255, 0.1)',
+                    },
+                    animation: {
+                        'slow-zoom': 'zoom 20s infinite alternate',
+                        'float': 'float 6s ease-in-out infinite',
+                        'spin-slow': 'spin 15s linear infinite',
+                    },
+                    keyframes: {
+                        zoom: {
+                            '0%': { transform: 'scale(1)' },
+                            '100%': { transform: 'scale(1.15)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .img-container {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .img-container img {
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), filter 0.3s ease;
+        }
+
+        .img-container:hover img {
+            transform: scale(1.02);
+            filter: grayscale(100%) sepia(100%) hue-rotate(190deg) saturate(300%) opacity(0.8);
+        }
+
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            opacity: 0;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .img-container:hover .play-icon {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 30s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .reveal-text {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .nav-logo {
+            filter: invert(1) grayscale(1) brightness(2);
+        }
+
+        /* Custom Gradients & Effects */
+        .glass-panel {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .text-glow {
+            text-shadow: 0 0 40px rgba(0, 82, 204, 0.6);
+        }
+
+        .bg-grid {
+            background-size: 50px 50px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+
+        .border-l-accent {
+            border-left: 4px solid #0052cc;
+            padding-left: 1.5rem;
+        }
+    </style>
+</head>
+
+<body class="font-body antialiased bg-bg-black selection:bg-columbia-blue selection:text-white">
+
+    <nav class="fixed w-full z-50 top-0 left-0 bg-bg-black/80 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-screen-2xl mx-auto px-4 md:px-6 h-16 md:h-20 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-3">
+                <img src="./logo.png" alt="COLOWORKS" class="h-6 md:h-8 w-auto nav-logo">
+                <span
+                    class="text-[10px] md:text-xs font-bold tracking-widest text-columbia-blue border border-columbia-blue px-2 py-0.5 hidden md:block">OFFICIAL</span>
+            </a>
+            <div class="flex items-center gap-4 md:gap-6">
+                <a href="#works"
+                    class="hidden md:block text-sm font-bold text-gray-400 hover:text-white transition-colors">WORKS</a>
+                <a href="#about"
+                    class="hidden md:block text-sm font-bold text-gray-400 hover:text-white transition-colors">ABOUT</a>
+                <a href="#contact"
+                    class="px-5 py-2 bg-white text-bg-black text-xs md:text-sm font-bold hover:bg-columbia-blue hover:text-white transition-all duration-300">
+                    JOIN US
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative h-screen w-full flex items-center justify-center overflow-hidden">
+
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2000&auto=format&fit=crop"
+                class="w-full h-full object-cover animate-slow-zoom opacity-60">
+            <div class="absolute inset-0 bg-grid opacity-30"></div>
+            <div
+                class="absolute inset-0 bg-gradient-to-t from-bg-black via-bg-black/40 to-columbia-dark-blue/30 mix-blend-multiply">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-bg-black/20 to-bg-black"></div>
+        </div>
+
+        <div class="relative z-10 w-full max-w-screen-2xl px-6 flex flex-col items-start justify-center h-full pt-20">
+
+            <div class="flex items-center gap-3 mb-6 reveal-text" style="animation-delay: 0.1s;">
+                <div class="w-2 h-2 bg-columbia-blue rounded-full animate-pulse"></div>
+                <span class="text-columbia-blue font-mono text-xs tracking-[0.2em]">SYSTEM STATUS: ONLINE / AI CORE
+                    ACTIVE</span>
+            </div>
+
+            <h1 class="font-display font-black text-6xl md:text-[8rem] leading-[0.85] text-white mb-8 reveal-text text-glow"
+                style="animation-delay: 0.2s;">
+                CREATE<br>
+                THE<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-columbia-blue to-white">UNSEEN.</span>
+            </h1>
+
+            <div class="flex flex-col md:flex-row items-start gap-8 reveal-text" style="animation-delay: 0.4s;">
+                <div class="h-full w-1 bg-gradient-to-b from-columbia-blue to-transparent md:h-24"></div>
+                <div>
+                    <p class="text-gray-300 text-lg md:text-2xl font-light leading-relaxed max-w-xl">
+                        AIクリエイティブに特化した<br>
+                        お仕事共創拠点「COLOWORKS」。
+                    </p>
+                    <div class="flex items-center gap-4 mt-6">
+                        <p class="text-xs text-gray-500 font-mono">BACKED BY NIPPON COLUMBIA GROUP</p>
+                        <div class="h-px w-12 bg-gray-700"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="absolute bottom-10 right-6 md:right-16 md:bottom-20 max-w-sm w-full reveal-text"
+                style="animation-delay: 0.8s;">
+                <div
+                    class="glass-panel p-6 rounded-2xl relative overflow-hidden group hover:border-columbia-blue/50 transition-colors">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-columbia-red"></div>
+                    <div class="flex justify-between items-start mb-2">
+                        <span class="text-columbia-red text-[10px] font-bold tracking-widest uppercase">Breaking
+                            News</span>
+                        <span class="text-gray-500 text-[10px] font-mono">NOW</span>
+                    </div>
+                    <h3
+                        class="font-bold text-white text-lg leading-tight mb-2 group-hover:text-columbia-blue transition-colors">
+                        日本コロムビア所属アーティスト<br>MV案件、3件進行中。
+                    </h3>
+                    <a href="#contact"
+                        class="inline-flex items-center gap-2 text-xs text-gray-400 hover:text-white transition-colors">
+                        View Details <span class="text-columbia-blue">→</span>
+                    </a>
+                </div>
+            </div>
+
+            <div
+                class="absolute top-1/4 right-0 md:right-32 w-64 h-64 md:w-96 md:h-96 border border-white/5 rounded-full animate-spin-slow pointer-events-none">
+            </div>
+            <div class="absolute top-1/4 right-0 md:right-32 w-64 h-64 md:w-96 md:h-96 border border-white/5 rounded-full animate-spin-slow pointer-events-none"
+                style="animation-direction: reverse; transform: scale(0.8);"></div>
+
+        </div>
+    </header>
+
+    <div class="py-3 md:py-4 bg-columbia-dark-blue border-y border-white/10 relative z-20">
+        <div class="marquee-container font-display text-xl md:text-2xl font-bold text-white/80 tracking-wider">
+            <div class="marquee-content">
+                AI CREATORS WANTED /// GENERATIVE ARTISTS /// VIDEO DIRECTORS /// PROMPT ENGINEERS /// AI CREATORS
+                WANTED ///
+            </div>
+        </div>
+    </div>
+
+    <section id="works" class="py-16 md:py-24 px-6 max-w-screen-2xl mx-auto">
+        <div class="flex items-baseline justify-between mb-12 md:mb-16 border-b border-white/10 pb-6">
+            <h2 class="font-display text-4xl md:text-6xl font-black tracking-tight">WORKS</h2>
+            <span class="hidden md:block text-columbia-blue font-bold">Hikawa Kiyoshi x AI Creative Contest</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 mb-16 md:mb-24 items-center group">
+            <div class="md:col-span-8 order-2 md:order-1">
+                <a href="https://www.youtube.com/watch?v=60lUptUI5Nc" target="_blank"
+                    class="block img-container aspect-video w-full bg-gray-800">
+                    <img src="https://img.youtube.com/vi/60lUptUI5Nc/maxresdefault.jpg"
+                        class="w-full h-full object-cover">
+                    <div
+                        class="play-icon w-16 h-16 md:w-20 md:h-20 bg-columbia-red text-white rounded-full flex items-center justify-center">
+                        <svg class="w-6 h-6 md:w-8 md:h-8 fill-current ml-1" viewBox="0 0 24 24">
+                            <path d="M3 22v-20l18 10-18 10z" />
+                        </svg>
+                    </div>
+                </a>
+            </div>
+            <div class="md:col-span-4 order-1 md:order-2 pl-0 md:pl-8">
+                <div class="text-columbia-red font-bold text-xs md:text-sm mb-2">GRAND PRIZE</div>
+                <h3
+                    class="font-display text-3xl md:text-5xl font-bold mb-4 leading-none group-hover:text-columbia-blue transition-colors">
+                    ShowMe<br>Beast</h3>
+                <p class="text-lg md:text-xl text-white mb-2">AoKi¹⁰⁴</p>
+                <p class="text-gray-500 text-xs md:text-sm">
+                    圧倒的な生成クオリティと、楽曲の世界観を拡張する演出力。AI映像の新たな金字塔。
+                </p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <a href="https://youtu.be/z72n3vNcGGI?si=K2x4rGMXGtIJQQLa" target="_blank" class="group">
+                <div class="img-container aspect-video mb-4 bg-gray-800">
+                    <img src="https://img.youtube.com/vi/z72n3vNcGGI/maxresdefault.jpg"
+                        class="w-full h-full object-cover">
+                    <div
+                        class="play-icon w-12 h-12 bg-columbia-blue text-white rounded-full flex items-center justify-center">
+                        <svg class="w-5 h-5 fill-current ml-1" viewBox="0 0 24 24">
+                            <path d="M3 22v-20l18 10-18 10z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="border-l-2 border-white/20 pl-4 group-hover:border-columbia-blue transition-colors">
+                    <h4 class="font-bold text-lg">THE EYES</h4>
+                    <p class="text-gray-500 text-sm">たかはしひろ無</p>
+                </div>
+            </a>
+            <a href="https://youtu.be/v4JIvq8XMow?si=FDAyaqSsS4tPZF9-" target="_blank" class="group">
+                <div class="img-container aspect-video mb-4 bg-gray-800">
+                    <img src="https://img.youtube.com/vi/v4JIvq8XMow/maxresdefault.jpg"
+                        class="w-full h-full object-cover">
+                    <div
+                        class="play-icon w-12 h-12 bg-columbia-blue text-white rounded-full flex items-center justify-center">
+                        <svg class="w-5 h-5 fill-current ml-1" viewBox="0 0 24 24">
+                            <path d="M3 22v-20l18 10-18 10z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="border-l-2 border-white/20 pl-4 group-hover:border-columbia-blue transition-colors">
+                    <h4 class="font-bold text-lg">ENKA EVOLUTION</h4>
+                    <p class="text-gray-500 text-sm">サイバー演歌</p>
+                </div>
+            </a>
+            <a href="https://youtu.be/2hn3ZV_FwDk?si=iF2g_X2sGNDpyFe5" target="_blank" class="group">
+                <div class="img-container aspect-video mb-4 bg-gray-800">
+                    <img src="https://img.youtube.com/vi/2hn3ZV_FwDk/maxresdefault.jpg"
+                        class="w-full h-full object-cover">
+                    <div
+                        class="play-icon w-12 h-12 bg-columbia-blue text-white rounded-full flex items-center justify-center">
+                        <svg class="w-5 h-5 fill-current ml-1" viewBox="0 0 24 24">
+                            <path d="M3 22v-20l18 10-18 10z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="border-l-2 border-white/20 pl-4 group-hover:border-columbia-blue transition-colors">
+                    <h4 class="font-bold text-lg">Party of Monster</h4>
+                    <p class="text-gray-500 text-sm">Yamada akari</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section id="about"
+        class="py-16 md:py-24 bg-gradient-to-b from-bg-black to-columbia-dark-blue/20 border-t border-white/10">
+        <div class="max-w-screen-2xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row gap-12 md:gap-16">
+                <div class="w-full md:w-1/3">
+                    <h2 class="font-display text-4xl md:text-5xl font-black mb-6">WHY<br>JOIN US?</h2>
+                    <p class="text-gray-400 font-medium leading-relaxed mb-8">
+                        日本コロムビアが提供する、<br>
+                        クリエイターのための<br>
+                        新しいエコシステム。
+                    </p>
+                    <a href="#contact"
+                        class="inline-block border-b border-columbia-blue pb-1 text-columbia-blue hover:text-white transition-colors">
+                        今すぐ応募する
+                    </a>
+                </div>
+
+                <div class="w-full md:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12 md:gap-y-16">
+                    <div>
+                        <h3 class="text-lg md:text-xl font-bold mb-3 text-columbia-blue">MAJOR LABEL ACCESS</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed border-l-2 border-white/10 pl-4">
+                            案件獲得、クライアント窓口はコロワークスが担当。個人ではアプローチできないメジャー案件を開拓し、クリエイターは「創ること」だけに没頭できます。
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg md:text-xl font-bold mb-3 text-columbia-blue">LEGAL & SAFE</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed border-l-2 border-white/10 pl-4">
+                            複雑な権利関係や契約書はすべて運営がサポート。クリエイターは面倒な手続きから解放されます。
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg md:text-xl font-bold mb-3 text-columbia-blue">SQUAD SYSTEM</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed border-l-2 border-white/10 pl-4">
+                            生成特化と編集特化がチームを組み、弱点を補完。一人では到達できないクオリティを実現します。
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg md:text-xl font-bold mb-3 text-columbia-red">SMART WORKFLOW</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed border-l-2 border-columbia-red pl-4">
+                            抽象的なオーダーを、AIクリエイターが迷わず動ける「正確な仕様書」に翻訳。無茶な修正や認識ズレを未然に防ぎます。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 md:py-24 px-6 border-t border-white/10 bg-bg-black">
+        <div class="max-w-screen-2xl mx-auto">
+            <h2 class="font-display text-4xl md:text-5xl font-black mb-16 text-center">WANTED</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+                <div
+                    class="p-8 border border-white/10 bg-white/5 relative overflow-hidden group hover:border-columbia-blue transition-colors">
+                    <div
+                        class="absolute top-0 right-0 p-4 opacity-10 font-display text-6xl font-black group-hover:opacity-20 transition-opacity">
+                        AI</div>
+                    <h3 class="font-display text-2xl md:text-3xl font-bold mb-4 text-columbia-blue">GENERATIVE ARTIST
+                    </h3>
+                    <p class="text-gray-300 font-bold mb-6">
+                        AIによる素材生成のスペシャリスト。<br>
+                        画風の確立、プロンプトエンジニアリング。
+                    </p>
+                    <div class="flex flex-wrap gap-2 md:gap-3">
+                        <span
+                            class="px-3 py-1 bg-columbia-blue/20 text-columbia-blue border border-columbia-blue/30 text-xs font-bold">Stable
+                            Diffusion</span>
+                        <span
+                            class="px-3 py-1 bg-columbia-blue/20 text-columbia-blue border border-columbia-blue/30 text-xs font-bold">Midjourney
+                            Expert</span>
+                        <span
+                            class="px-3 py-1 bg-columbia-blue/20 text-columbia-blue border border-columbia-blue/30 text-xs font-bold">ComfyUI
+                            Workflow Architect</span>
+                        <span
+                            class="px-3 py-1 bg-columbia-blue/20 text-columbia-blue border border-columbia-blue/30 text-xs font-bold">LoRA
+                            Training</span>
+                    </div>
+                </div>
+
+                <div
+                    class="p-8 border border-white/10 bg-white/5 relative overflow-hidden group hover:border-columbia-red transition-colors">
+                    <div
+                        class="absolute top-0 right-0 p-4 opacity-10 font-display text-6xl font-black group-hover:opacity-20 transition-opacity">
+                        Dir</div>
+                    <h3 class="font-display text-2xl md:text-3xl font-bold mb-4 text-columbia-red">VIDEO DIRECTOR /
+                        EDITOR</h3>
+                    <p class="text-gray-300 font-bold mb-6">
+                        構成、演出、コンポジットのプロ。<br>
+                        生成素材を映像作品へと昇華させる技術。
+                    </p>
+                    <div class="flex flex-wrap gap-2 md:gap-3">
+                        <span
+                            class="px-3 py-1 bg-columbia-red/20 text-columbia-red border border-columbia-red/30 text-xs font-bold">Adobe
+                            After Effects</span>
+                        <span
+                            class="px-3 py-1 bg-columbia-red/20 text-columbia-red border border-columbia-red/30 text-xs font-bold">Premiere
+                            Pro</span>
+                        <span
+                            class="px-3 py-1 bg-columbia-red/20 text-columbia-red border border-columbia-red/30 text-xs font-bold">DaVinci
+                            Resolve</span>
+                        <span
+                            class="px-3 py-1 bg-columbia-red/20 text-columbia-red border border-columbia-red/30 text-xs font-bold">Unreal
+                            Engine 5</span>
+                        <span
+                            class="px-3 py-1 bg-columbia-red/20 text-columbia-red border border-columbia-red/30 text-xs font-bold">TouchDesigner
+                            / VJ</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 md:py-24 px-6 border-t border-white/10 bg-bg-black">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="font-display text-center text-3xl font-bold mb-16 text-gray-500">PROJECT FLOW</h2>
+
+            <div class="flex flex-col space-y-4">
+                <div
+                    class="flex items-start gap-6 p-6 md:p-8 border-l-4 border-columbia-blue bg-white/5 hover:bg-white/10 transition-colors">
+                    <div class="text-4xl font-display font-black text-white/20 pt-1">01</div>
+                    <div>
+                        <h3 class="font-bold text-xl text-columbia-blue mb-2">ENTRY</h3>
+                        <p class="text-gray-400 text-sm">ポートフォリオによる審査。あなたのクリエイティビティを見せてください。</p>
+                    </div>
+                </div>
+
+                <div
+                    class="flex items-start gap-6 p-6 md:p-8 border-l-4 border-white/20 bg-white/5 hover:bg-white/10 transition-colors">
+                    <div class="text-4xl font-display font-black text-white/20 pt-1">02</div>
+                    <div>
+                        <h3 class="font-bold text-xl text-white mb-2">INVITE</h3>
+                        <p class="text-gray-400 text-sm">審査通過者を限定Discordコミュニティへ招待。ここが全ての活動の拠点となります。</p>
+                    </div>
+                </div>
+
+                <div
+                    class="flex items-start gap-6 p-6 md:p-8 border-l-4 border-white/20 bg-white/5 hover:bg-white/10 transition-colors">
+                    <div class="text-4xl font-display font-black text-white/20 pt-1">03</div>
+                    <div>
+                        <h3 class="font-bold text-xl text-white mb-2">TEAM UP</h3>
+                        <p class="text-gray-400 text-sm">仲間を見つけ、チームを結成。（※もちろんソロでの参加も可能です）</p>
+                    </div>
+                </div>
+
+                <div
+                    class="flex items-start gap-6 p-6 md:p-8 border-l-4 border-columbia-red bg-white/5 hover:bg-white/10 transition-colors">
+                    <div class="text-4xl font-display font-black text-white/20 pt-1">04</div>
+                    <div>
+                        <h3 class="font-bold text-xl text-columbia-red mb-2">COMPETITION & MATCHING</h3>
+                        <p class="text-gray-400 text-sm">案件コンペに参加し、勝者が制作権と報酬を獲得。実績に応じたダイレクトな指名オファーもあります。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 md:py-20 px-6 bg-white/5">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="font-display text-3xl font-bold mb-12 text-center">FAQ</h2>
+            <div class="grid gap-6">
+                <div class="flex gap-4 items-start">
+                    <span class="text-columbia-blue font-bold text-xl">Q.</span>
+                    <div>
+                        <p class="font-bold text-white mb-1">副業でも大丈夫ですか？</p>
+                        <p class="text-sm text-gray-400">問題ありません。土日や深夜帯に稼働できる案件も多数ございます。</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 items-start">
+                    <span class="text-columbia-blue font-bold text-xl">Q.</span>
+                    <div>
+                        <p class="font-bold text-white mb-1">実績がSNSしかありませんが応募できますか？</p>
+                        <p class="text-sm text-gray-400">SNSのリンクがあれば十分です。フォロワー数よりもクリエイティブの質を重視します。</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 items-start">
+                    <span class="text-columbia-blue font-bold text-xl">Q.</span>
+                    <div>
+                        <p class="font-bold text-white mb-1">顔出しや実名は必要ですか？</p>
+                        <p class="text-sm text-gray-400">不要です。匿名やアバターでの参加も歓迎しており、多くのクリエイターがそのように活動しています。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 md:py-32 px-6 bg-columbia-blue text-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-columbia-blue to-columbia-dark-blue"></div>
+        <div
+            class="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20">
+        </div>
+
+        <div class="relative z-10 max-w-4xl mx-auto">
+            <h2 class="font-display text-4xl md:text-7xl font-black mb-8 text-white tracking-tight">JOIN
+                OUR<br>COMMUNITY.
+            </h2>
+            <p class="text-white/80 text-lg mb-12 font-bold">
+                最先端のプロジェクトがあなたを待っています。
+            </p>
+            <a href="https://forms.gle/FmmasxeN4ugcg58c6" target="_blank"
+                class="inline-block px-8 md:px-12 py-4 md:py-5 bg-white text-columbia-blue text-lg md:text-xl font-bold hover:bg-bg-black hover:text-white transition-all duration-300 transform hover:-translate-y-1 shadow-2xl skew-x-[-12deg]">
+                <span class="block skew-x-[12deg]">コミュニティに参加する (Google Form)</span>
+            </a>
+            <p class="mt-6 text-sm text-white/60 font-medium">*Takes less than 5 minutes</p>
+        </div>
+    </section>
+
+    <footer class="py-12 px-6 bg-bg-black border-t border-white/10">
+        <div
+            class="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+            <div class="mb-6 md:mb-0 flex items-center gap-4 justify-center md:justify-start">
+                <img src="./logo.png" alt="COLOWORKS" class="h-6 w-auto nav-logo">
+                <div class="h-4 w-px bg-gray-700"></div>
+                <span class="text-xs text-gray-500">Operating Company: <a href="https://www.columbia.co.jp/"
+                        class="hover:text-white transition-colors">Nippon Columbia Group</a></span>
+            </div>
+            <div class="flex gap-6 text-xs font-bold text-gray-500 justify-center">
+                <a href="#" class="hover:text-columbia-blue">TWITTER</a>
+                <a href="#" class="hover:text-columbia-blue">INSTAGRAM</a>
+                <a href="#" class="hover:text-columbia-blue">DISCORD</a>
+                <span>© 2025 COLOWORKS</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
